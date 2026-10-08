@@ -1,0 +1,4 @@
+interface:
+  display_name: "内链内容建设"
+  short_description: "规划 SEO 内链内容与主题集群，先明确页面角色、关联页面和转化路径"
+  default_prompt: "使用 $seo-link-neilian 规划或撰写 SEO 内链内容，先做 Content Brief，再按核心页、主题支柱页、长尾支持页三层结构生成内容。"
