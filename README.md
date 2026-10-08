@@ -34,13 +34,24 @@ skills/
 
 ## 安装
 
-```text
-git clone https://github.com/Hamer-2014/skillmanual-skills.git
+以下步骤适用于尚未安装该 Skill 的项目。先进入目标项目目录，在 Windows PowerShell 中运行：
+
+```powershell
+git clone -c core.autocrlf=false https://github.com/Hamer-2014/skillmanual-skills.git
+git -C skillmanual-skills checkout --detach 0a78f329cf69c87a5dc795335f94155f7f44d20b
+New-Item -ItemType Directory -Force .agents/skills | Out-Null
+Copy-Item -LiteralPath skillmanual-skills/skills/seo-link-neilian -Destination .agents/skills/seo-link-neilian -Recurse
 ```
 
-将 `skills/seo-link-neilian` 整个目录放入实际宿主的 Skill 目录。Codex 可使用 `$CODEX_HOME/skills`；未设置时通常为 `~/.codex/skills`。请保留宿主已有的禁用规则和显式调用策略。本说明不承诺 Claude 或其他具体宿主可以自动安装，也不建议通过包管理器自动执行安装命令。
+项目级安装目录为 `.agents/skills/seo-link-neilian`，符合 [Codex 官方 Skill 文档](https://learn.chatgpt.com/docs/build-skills) 的仓库发现路径。保留宿主已有的禁用规则和显式调用策略。`core.autocrlf=false` 让这个新 clone 保持发布版文件字节，便于核对 SHA256，不修改全局 Git 配置。
+
+2026-10-08 在全新 Windows 目录完成固定版本 checkout、目录安装及两个文件的原始字节哈希验证。当前已安装 CLI 为 `0.154.0`；本轮 CLI 自动发现、实际调用与同输入对照仍待账号登录，尚未完成。桌面 App 的当前观察版本为 `26.1002.52244`（build `13536`），该版本号不等于 CLI 版本或模型版本。
+
+网站记录：[中文详情](https://skillmanual.com/zh/skills/6c14f465-1e14-4f94-8498-a499b32f1e1c) · [English](https://skillmanual.com/skills/6c14f465-1e14-4f94-8498-a499b32f1e1c)。报告为编辑自测和部分验证，不是独立审核、所有宿主兼容或搜索排名保证。
 
 ## 调用
+
+在 Codex 会话中调用：
 
 ```text
 $seo-link-neilian
